@@ -1,0 +1,12 @@
+Tema: Rotina universitária
+Cenário: Casa
+Todo : 
+1. Inventário
+2. Pontos de habilidade
+3. 5 finais diferentes (desistência, sem DPs, mais ou menos bem, mais DPs, intercâmbio)
+4. Python
+5. Pedir o nome da pessoa
+6. Figurinha da UNIFESP
+7. Trabalhos e notas de prova
+8. Salvar o jogo
+Objetivo: Acabar o semestre e chegar nas férias sem DP
