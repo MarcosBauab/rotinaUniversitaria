@@ -342,7 +342,7 @@ def almoco():
         comida = input("Escolha sua comida: ")
         print('')
         while comida.lower() != "hot pocket" and comida.lower() != "miojo" and comida.lower() != "espaghetti pupunha ao molho pesto" and comida.lower() != "tilapia, arroz e brocolis":
-            comida = input("Escolha sua comida: ")
+            comida = input("Escolha sua comida (escreva o nome todo da comida): ")
         for i in range(len(inventario['Comidas'])):
             separados = inventario['Comidas'][i][0].split("-")
             if comida.lower()+" " == separados[0].lower():
@@ -475,7 +475,7 @@ def aula_quimica():
     espaco()
     relogio(13, 50)
     print('NOSSA, 13:50h já!! Como o tempo voou 😱 \n'
-          'de acordo com sua agenda, você tem aula de química às 15h! Você vai assisti-la(A) ou prefere dar uma descansada(B)?')
+          'de acordo com sua agenda, você tem aula de química às 14h! Você vai assisti-la(A) ou prefere dar uma descansada(B)?')
     decisao = input()
     while decisao.lower() != 'a' and decisao.lower() != 'b':
         print('Escolha "A" ou "B"')
@@ -634,23 +634,27 @@ def janta(decisao):
             separados = inventario['Comidas'][i][0].split("-")
             if comida.lower()+" " == separados[0].lower():
                 if comida.lower() == 'hot pocket':
+                    inventario['Comidas'].pop(i)
                     print("Refeição prática e rápida, mas não tão saudável. {Saúde -3}")
                     habilidades['saude'] -= 3
-
+                    break
                 elif comida.lower() == 'miojo':
+                    inventario['Comidas'].pop(i)
                     print("Um clássico, mas não muito saudável. {Saúde -3}")
                     habilidades['saude'] -= 3
-
+                    break
                 elif comida.lower() == 'espaghetti pupunha ao molho pesto':
+                    inventario['Comidas'].pop(i)
                     print("Escolha de alta gastromia! Excelente! {Energia +1, Saúde +2}")
                     habilidades['energia'] += 1
                     habilidades['saude'] += 2
-
+                    break
                 elif comida.lower() == 'tilapia, arroz e brocolis':
+                    inventario['Comidas'].pop(i)
                     print("Excelente escolha! {Energia +1, Saúde +2}")
                     habilidades['energia'] += 1
                     habilidades['saude'] += 2
-
+                    break
     elif decisao.lower() == 'b':
         #Opções de comida saudável e não saudável baseado no dinheiro
         # 0 - pizza 1 - hamburgão 2 - caldinho 3 - poke

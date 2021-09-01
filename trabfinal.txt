@@ -1,13 +1,10 @@
-Tema: Rotina universitária
+Tema: Rotina universitária em EaD (ADE)
 Cenário: Casa
 Todo : 
 1. Inventário
 2. Pontos de habilidade
-4. Python
-5. Pedir o nome da pessoa
-6. Figurinha da UNIFESP
-8. Salvar o jogo
-Objetivo: Acabar o dia
+3. Salvar o jogo
+Objetivo: Acabar o dia com produtividade
 
 Manhã :
 Café da manhã com a família - 7h
@@ -35,8 +32,6 @@ Janta 19h
 Google meet cosamigo 20h - só se acabou as avas
 Planejar o dia seguinte (acabar com a rotina)
 
-
-No final de cada dia:
 
 
 
