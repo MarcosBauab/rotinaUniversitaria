@@ -1,21 +1,13 @@
 import random
 import time
 import re
-
-"""save = 0
-j = open("salvar.txt","r")
-teste = j.readline()
-if teste == "1\n":
-    save = 1
-elif teste == '2\n':
-    save = 2
-"""
+import salvar
 
 habilidades = {'alegria': 5, 'energia': 5, 'esportes': 5, 'amizades': 5, 'organizacao': 5, 'saude': 5}
 inventario = {'Dinheiro': 15, 'Itens': [], 'Comidas': []}
-lista = ['Bola - 20 reais', 'Halter - 20 reais','Hot Pocket - 20 reais', 'Miojo - 15 reais', 'Espaghetti pupunha ao molho pesto - 60 reais', 'Tilápia, arroz e brócolis - 50 reais']
+lista = ['Bola - 20 reais', 'Halter - 20 reais','Hot Pocket - 20 reais', 'Miojo - 15 reais', 'Espaghetti pupunha ao molho pesto - 60 reais', 'Tilapia, arroz e brocolis - 50 reais']
 ifood = ['Pizza', 'Hamburgão', 'Caldinho', 'Poke']
-
+periodo = salvar.periodo
 
 #Game Over
 def gameOver():
@@ -323,16 +315,11 @@ def manha():
     espaco()
     print("Essas são suas habilidades até aqui: ")
     status()
-    """
-    f = open("salvar.txt", "w")
-    a = open("salvar.txt", "a")
-    f.write("1\n")
-    a.write(str(inventario))
-    a.write("\n")
-    a.write(str(habilidades))
+    f = open("salvar.py","w")
+    f.write("periodo = 'tarde'\n")
+    f.write("inventario = "+str(inventario)+"\n")
+    f.write("habilidades = "+str(habilidades))
     f.close()
-    a.close()
-    """
 
 #Tarde
 def almoco():
@@ -354,12 +341,12 @@ def almoco():
             print(separados[0])
         comida = input("Escolha sua comida: ")
         print('')
-        while comida.lower() != "hot pocket" and comida.lower() != "miojo" and comida.lower() != "espaghetti pupunha ao molho pesto" and comida.lower() != "tilápia, arroz e brócolis":
+        while comida.lower() != "hot pocket" and comida.lower() != "miojo" and comida.lower() != "espaghetti pupunha ao molho pesto" and comida.lower() != "tilapia, arroz e brocolis":
             comida = input("Escolha sua comida: ")
         for i in range(len(inventario['Comidas'])):
             separados = inventario['Comidas'][i][0].split("-")
             if comida.lower()+" " == separados[0].lower():
-                if comida.lower() == 'tilápia, arroz e brócolis':
+                if comida.lower() == 'tilapia, arroz e brocolis':
                     inventario['Comidas'].pop(i)
                     print('UAAU, que prato saudável!! Aí sim emm :) {Saúde +2}')
                     habilidades['saude'] += 2
@@ -621,6 +608,12 @@ def tarde():
     esporte()
     espaco()
     status()
+    time.sleep(4)
+    f = open("salvar.py", "w")
+    f.write("periodo = 'noite'\n")
+    f.write("inventario = " + str(inventario) + "\n")
+    f.write("habilidades = " + str(habilidades))
+    f.close()
 
 #Noite
 def janta(decisao):
@@ -634,7 +627,7 @@ def janta(decisao):
             separados = inventario['Comidas'][i][0].split("-")
             print(separados[0])
         comida = input("Escolha sua comida: ")
-        while comida.lower() != "hot pocket" and comida.lower() != "miojo" and comida.lower() != "espaghetti pupunha ao molho pesto" and comida.lower() != "tilápia, arroz e brócolis":
+        while comida.lower() != "hot pocket" and comida.lower() != "miojo" and comida.lower() != "espaghetti pupunha ao molho pesto" and comida.lower() != "tilapia, arroz e brocolis":
             comida = input("Escolha sua comida: ")
 
         for i in range(len(inventario['Comidas'])):
@@ -653,7 +646,7 @@ def janta(decisao):
                     habilidades['energia'] += 1
                     habilidades['saude'] += 2
 
-                elif comida.lower() == 'tilápia, arroz e brócolis':
+                elif comida.lower() == 'tilapia, arroz e brocolis':
                     print("Excelente escolha! {Energia +1, Saúde +2}")
                     habilidades['energia'] += 1
                     habilidades['saude'] += 2
@@ -775,27 +768,67 @@ decisao = 'N'
 while decisao.lower() != "s":
       decisao = input("Pronto para começar ? (S/N): ")
 
-
-
-manha()
-if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
-        (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
-        (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
-    gameOver()
-else:
+if periodo == 'tarde' or periodo == 'noite':
+    espaco()
+    decisao = input("Você quer (a) reiniciar o jogo ou (b) continuar de onde parou ? ")
+    while decisao.lower() != 'a' and decisao.lower() != 'b':
+        print("Escolha 'a' ou 'b': ")
+        decisao = input()
+    if decisao.lower() == 'a':
+        periodo = 'manha'
+    elif decisao.lower() == 'b':
+        periodo = salvar.periodo
+    espaco()
+if periodo == 'manha':
+    inventario = inventario
+    habilidades = habilidades
+    manha()
+    if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
+            (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
+            (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
+        gameOver()
+    else:
+        tarde()
+        if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
+            (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
+            (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
+            gameOver()
+        else:
+            noite()
+            if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
+               (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
+               (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
+                gameOver()
+            else:
+                venceu()
+elif periodo == 'tarde':
+    periodo = salvar.periodo
+    inventario = salvar.inventario
+    habilidades = salvar.habilidades
     tarde()
     if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
-        (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
-        (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
+            (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
+            (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
         gameOver()
     else:
         noite()
         if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
-           (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
-           (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
+                (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
+                (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
             gameOver()
         else:
             venceu()
+elif periodo == 'noite':
+    periodo = salvar.periodo
+    inventario = salvar.inventario
+    habilidades = salvar.habilidades
+    noite()
+    if (habilidades['alegria'] <= 0) or (habilidades['energia'] <= 0) or \
+            (habilidades['esportes'] <= 0) or (habilidades['amizades'] <= 0) or \
+            (habilidades['organizacao'] <= 0) or (habilidades['saude'] <= 0):
+        gameOver()
+    else:
+        venceu()
 
 
 
