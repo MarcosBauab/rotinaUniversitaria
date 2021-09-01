@@ -3,10 +3,40 @@ Cenário: Casa
 Todo : 
 1. Inventário
 2. Pontos de habilidade
-3. 5 finais diferentes (desistência, sem DPs, mais ou menos bem, mais DPs, intercâmbio)
 4. Python
 5. Pedir o nome da pessoa
 6. Figurinha da UNIFESP
-7. Trabalhos e notas de prova
 8. Salvar o jogo
-Objetivo: Acabar o semestre e chegar nas férias sem DP
+Objetivo: Acabar o dia
+
+Manhã :
+Café da manhã com a família - 7h
+Aula de cálculo das 8h às 10h (dormiu demais acordou as 10h)
+Freela blogueiro = 100 conto - 10 - 11
+Ir no mercado (comprar bola (20), comida [saudável (50) ou não (25) ?] (print na listinha da mamãe)) 11 - 12
+    Listinha:
+    Bola - 20
+    Halter - 20
+    Hot Pocket - 20
+    Espaghetti pupunha com molho pesto - 60
+    Miojo - 15
+    Tilápia, arroz e brócolis - 50
+
+Tarde :
+Almoço 12h - 13h
+Adiantar as AVAs ou descansar até as 14h
+Aula de química às 14h até as 15h
+Ir no dentista 16h - 17h - combustível baixo (abastecer = 50) ou uber (15) - demora muito pra chegar e não chega na hora
+Praticar esportes 17h - 18h
+
+Noite :
+Fazer as AVAs 18h - 19h
+Janta 19h
+Google meet cosamigo 20h - só se acabou as avas
+Planejar o dia seguinte (acabar com a rotina)
+
+
+No final de cada dia:
+
+
+
